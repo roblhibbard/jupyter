@@ -114,7 +114,13 @@ RUN conda install --quiet --yes \
     rm -rf /home/$NB_USER/.cache/yarn && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
-
+    
+RUN conda install --quiet --yes \
+    'beakerx=1.4.1' \
+    conda clean --all -f -y && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
+    
 EXPOSE 8888
 
 # Configure container startup
